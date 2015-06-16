@@ -215,7 +215,10 @@ function knowPeople(callback) {
     
     [{ name: 'Mary', age: 30}, { name: 'Minor', age: 50}].forEach(
         function(person) {
-            callback(person);
+            
+            setTimeout(function() {
+                callback(person);
+            }, 0);
         }
     );
     
@@ -245,6 +248,79 @@ console.log( abc(2, 2) );
     }
 )(2, 2);
 */
+
+// 5.5. Timer Functions
+/*
+console.log('Before BOOM !!!');
+
+setTimeout(
+    function() {
+        console.log('BOOM !!!');
+    }
+, 0);
+
+console.log('After BOOM !!!');
+*/
+
+/*
+var counterInterval = 1;
+var interval =
+    setInterval(function(){
+       
+        var date = new Date();
+        console.log( date.getHours() + ':' + 
+                     date.getMinutes() + ':' + 
+                     date.getSeconds() );
+        
+        if (counterInterval == 5)
+            clearInterval(interval);
+        
+        counterInterval++;
+        
+    }, 1000);
+*/
+
+// 6. Scope
+/*
+var x = 1;
+
+function abc() {
+    var x = 5;
+    console.log('Inside fn ' + x);
+}
+
+abc();
+
+console.log('Outside fn ' + x);
+*/
+
+// The Power of Hoisting
+/*
+var a = 1;
+
+function xyz() {
+    if (false) {
+        var a = 2;
+    }
+    
+    return a;
+}
+
+console.log( xyz() );
+*/
+
+/*
+if (true)
+    function foo() { console.log('One'); }
+else
+    function foo() { console.log('Two'); }
+    
+foo();
+*/
+
+
+
+
 
 
 
