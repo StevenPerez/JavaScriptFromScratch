@@ -97,7 +97,7 @@ console.log( person.hasOwnProperty('name') );
 */
 
 // 4. Arrays
-
+/*
 var cars = [];
 
 console.log(typeof cars);
@@ -136,6 +136,122 @@ console.log(cars);
 cars.forEach(function(car){
     console.log( car.name );
 });
+
+var oneCar = cars[1];
+for (var property in oneCar){
+    console.log( 'Prop => ' + property + ' / value => ' + oneCar[property] );
+};
+
+// map
+var models = cars.map( function(car){ return car.model; } );
+console.log(models);
+
+// filter
+var twoYearsAgo = cars.filter(function(car){ return car.model > 2013; });
+console.log(twoYearsAgo);
+
+// Check if all cars has a T in its name
+var tCars = cars.every(function(car) { return car.name.indexOf('T') !== -1; });
+console.log(tCars);
+
+// some
+var mCars = cars.some(function(car) { return car.model === 2015; });
+console.log(mCars);
+
+// sort
+var orderCars = cars.sort(function(car1, car2) { return car2.model - car1.model; });
+console.log(orderCars);
+
+// Get the first best ranking car which name contains a T
+var bestTCar = cars.filter(function(car){ return car.name.indexOf('T') !== -1; })
+                   .sort(function(car1, car2){ return car2.ranking - car1.ranking; })
+                   .map(function(car) { return car.name })
+                   [0];
+
+console.log(bestTCar);
+*/
+
+
+// 5. Functions
+
+// 5.1 Invoke Types
+
+// Function Declaration
+// Pure functions
+/*
+function sum(a, b) {
+    return a + b;
+}
+
+console.log( sum(1,2) );
+
+console.log( sum.call(null, 1, 2) );
+
+console.log( sum.apply(null, [1, 2]) );
+
+function abc() {
+    console.log( arguments );
+}
+
+abc.apply(this, [1, 2, 3, 'a']);
+*/
+
+// 5.2 Callback functions
+
+// Passing an Object to callback
+/*
+function myCallBack(params) {
+    params = params || {};
+    params.name = params.name || 'Steven';
+    params.age = params.age || 29;
+    
+    console.log('My name is ' + params.name + ' and I\'m ' + params.age + ' years old.');
+}
+
+function knowPeople(callback) {
+    callback = callback || function() {};
+    
+    console.log('Before Loop');
+    
+    [{ name: 'Mary', age: 30}, { name: 'Minor', age: 50}].forEach(
+        function(person) {
+            callback(person);
+        }
+    );
+    
+    callback();
+    
+    console.log('After Loop');
+}
+
+knowPeople(myCallBack);
+*/
+
+
+// 5.3 Function Expression
+/*
+var abc = function mul(a, b) {
+    return a * b;
+};
+
+console.log( abc(2, 2) );
+*/
+
+// 5.4 Anonymous function
+/*
+(
+    function(a, b) {
+        console.log( a - b );
+    }
+)(2, 2);
+*/
+
+
+
+
+
+
+
 
 
 
